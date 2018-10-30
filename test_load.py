@@ -5,7 +5,7 @@ import re
 import pymysql
 
 '''
-将1天前25个字段，
+将1天前?25个字段，
 一共7万多条数据导入到mysql，
 几秒钟完成
 '''
