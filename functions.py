@@ -578,7 +578,7 @@ if __name__ == '__main__':
     data_sample_time_series.to_csv(files_path + 'ST4000DM000_sort_use_sample_time_series_kDifferent_alpha07.csv',
                                    index=False)
     normalized(data_sample_time_series).to_csv(
-        files_path + 'ST4000DM000_sort_use_sample_time_series_kDifferent2_alpha07_normalized.csv', index=False)
+        files_path + 'ST4000DM000_sort_use_sample_time_series_kDifferent_alpha07_normalized.csv', index=False)
 
     end = time.time()
     print('结束时间：%0.2f' % end)
