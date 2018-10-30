@@ -1,1 +1,5 @@
 # DiskPrediction
+最终整理好了三个文件，只有一个文件路径files_path='D:\\a学习和工作\\data_Q3_2017\\'
+get_backblaze_data.py用于数据预处理，得到ST4000DM000_sort_use.csv文件
+functions.py包括很多特征化函数，得到ST4000DM000_sort_use_sample_time_series_kDifferent_alpha07_normalized.csv文件
+model.py用于训练模型并做测试，输出一些指标值，输入是第二个文件得到的数据文件
