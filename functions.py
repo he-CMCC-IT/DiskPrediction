@@ -13,7 +13,7 @@ files_path = 'D:\\a学习和工作\\data_Q3_2017\\'
 
 def normalized(df):
     '''
-    :param df: 需要标准化的DataFrame式磁盘数据
+    :param df: 需要标准化的DataFrame磁盘数据
     :return: 标准化到-1到1之间的磁盘数据
     '''
 
