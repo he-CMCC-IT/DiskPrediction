@@ -16,7 +16,7 @@ path_ST4000DM000_data_one_csv = conf.get('config', 'path_ST4000DM000_data_one_cs
 files = os.listdir(path_raw_data)
 for filename in files:
     if 'csv' in filename:
-        df = pd.read_csv(open(filespath + filename))
+        df = pd.read_csv(open(os.path.realpath(filename)))
         df[df['model'] == 'ST4000DM000'].to_csv(path_ST4000DM000_data + filename, index=False)
     print(filename)
 

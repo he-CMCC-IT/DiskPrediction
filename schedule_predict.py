@@ -7,6 +7,8 @@ import datetime
 import shutil
 import configparser
 
+from RedisPublisher import RedisPublisher
+
 '''
 
 每隔一小时检测一次所有磁盘的运行状态
@@ -49,7 +51,6 @@ def move_files(dir1, dir2):
 
 def job():
     print("Start: %s" % datetime.datetime.now())
-
     files = os.listdir(path_data_yidong_current)
     # pred_files = [filename for filename in files if datetime.datetime.now().hour == int(filename[-8:-6])]
     # print(filename)
@@ -116,13 +117,16 @@ def job():
 
     data = np.array(data)
     result = clf.predict(data)
-
+    rd = RedisPublisher()
     if sum(result) == 0:
+        rd.pubMsg("mychannel","所有磁盘都处在健康状态")
         print('所有磁盘都处在健康状态')
     elif sum(result) > 0:
         indexs = np.where(result == 1)[0]
         for i in indexs:
             print("磁盘" + disk_ids[i] + "大约在355个小时候发生故障！")
+            rd.pubMsg("mychannel", "磁盘" + disk_ids[i] + "大约在355个小时候发生故障！")
+
 
     print("End: %s" % datetime.datetime.now())
     # print(disk_ids)
@@ -130,8 +134,11 @@ def job():
     move_files(path_data_yidong_current, path_data_yidong_history)
 
 
-schedule.every().hour.do(job)
+# schedule.every().hour.do(job)
+#
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+if __name__=="__main__":
+    job()
