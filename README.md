@@ -1,1 +1,5 @@
 # DiskPrediction
+get_backblaze_data.py用于数据预处理，得到ST4000DM000_sort.csv文件
+functions.py包括很多特征化函数，得到ST4000DM000_sort_use_sample_time_series_kDifferent_alpha07_normalized.csv文件
+model.py用于训练模型并做测试，输出一些指标值，输入是第二个程序得到的数据文件
+schedule_predict.py是对所得到模型的小测试，每天采集机房机器硬盘数据，并进行预测，将结果发布到微信机器人
